@@ -1,0 +1,101 @@
+{
+    "meta": {
+        "num_matches_to_win_series": 2,
+        "team_ct": {
+            "name": "HEET",
+            "matches_won_this_series": 0
+        },
+        "team_t": {
+            "name": "GenOne",
+            "matches_won_this_series": 0
+        }
+    },
+    "hud_config": {
+        "tournament_name": "ESL Championnat National : Fall 2022",
+        "tournament_name_phase": "Playday 1 - Groupe B",
+        "tournament_name_position": "middle-left",
+        "match_format": "Best of 3",
+        "isChampionshipSeries": false,
+        "usePlayerPhotos": true,
+        "usePlayerFlags": true,
+        "pickedByText": "Choisie par",
+        "playingOnText": "Actuellement sur Ancient",
+        "showSouvenirs": false,
+        "isReplayHUD": true,
+        "isMapOverview": false,
+        "isPlayerPOV": false,
+        "showSeriesInfo": false,
+        "showTournamentLogo": true,
+        "useConfigNicknames": true,
+        "freezetimeDelay": 10,
+        "freezetimeDurationMinusOne": "19",
+        "mapSeriesDelay": 3,
+        "showAliveCount": true,
+        "showRadar": true,
+        "showPickedBy": true,
+        "showADR": true,
+        "controlOBS": false,
+        "OBSchangeDelay": 1,
+        "showRushInfo": false,
+        "showMVP": false,
+        "showMVPLabel": false,
+        "mvpLabelHeight": 66,
+        "mvpDelay": 5,
+        "mvpStayOnScreen": 13,
+        "showTeamColors": false,
+        "showPOVLinks": false,
+        "POVLinksEndpoint": "http://localhost:62626",
+        "POVLinksSource": "primary",
+        "isPOVStream": false,
+        "twitchApp": {
+            "sendPlayerNames": false,
+            "ip": "127.0.0.1",
+            "port": "3000",
+            "endpoint": "/control/set-player-names"
+        },
+        "mapSeries": {
+            "position": {
+                "top": 20,
+                "right": 40
+            },
+            "bestOf": 3,
+            "maps": {
+                "map1": {
+                    "mapLogo": "Ancient",
+                    "pickedBy": "HEET",
+                    "finalScore": "",
+                    "mapWinner": "HEET",
+                    "currentlyPlaying": true
+                },
+                "map2": {
+                    "mapLogo": "Overpass",
+                    "pickedBy": "GenOne",
+                    "finalScore": "",
+                    "mapWinner": "",
+                    "currentlyPlaying": false
+                },
+                "map3": {
+                    "mapLogo": "Vertigo",
+                    "pickedBy": "",
+                    "finalScore": "",
+                    "mapWinner": "",
+                    "currentlyPlaying": false
+                },
+                "map4": {
+                    "mapLogo": "",
+                    "pickedBy": "",
+                    "finalScore": "",
+                    "mapWinner": "",
+                    "currentlyPlaying": false
+                },
+                "map5": {
+                    "mapLogo": "",
+                    "pickedBy": "",
+                    "finalScore": "",
+                    "mapWinner": "",
+                    "currentlyPlaying": false
+                }
+            }
+        }
+    }
+}

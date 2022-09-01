@@ -1,0 +1,1 @@
+# Dokai Switch Script
