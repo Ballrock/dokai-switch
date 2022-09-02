@@ -1,20 +1,49 @@
 {
-    "name": "dokai-switch",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "bin": "index.js",
-    "scripts": {
-        "build": "pkg ."
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "commander": "^9.4.0",
-        "pkg": "^5.8.0"
-    },
-    "pkg": {
-        "targets": [ "node14-win-x64" ],
-        "outputPath": "dist"
-    }
+  "name": "dokai-switch",
+  "version": "0.0.0-development",
+  "description": "",
+  "main": "index.js",
+  "bin": "index.js",
+  "private": "true",
+  "scripts": {
+    "build": "pkg . && create-nodew-exe build/dokai-switch.exe dist/dokai-switch.exe",
+    "semantic-release": "semantic-release"
+  },
+  "author": "Antoine 'bLk`' Précigout",
+  "dependencies": {
+    "commander": "^9.4.0"
+  },
+  "devDependencies": {
+    "create-nodew-exe": "^1.0.10",
+    "pkg": "^5.8.0",
+    "rimraf": "^3.0.2",
+    "semantic-release": "^19.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ballrock/dokai-switch.git"
+  },
+  "pkg": {
+    "targets": [
+      "node16-win-x64"
+    ],
+    "outputPath": "build"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/github",
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "set-version ${nextRelease.version}",
+        "publishCmd": "publish-package"
+      }
+    ]
+  ]
 }
