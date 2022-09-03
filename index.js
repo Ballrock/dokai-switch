@@ -3,6 +3,8 @@
 const fs = require('fs');
 const { program, Option } = require('commander');
 
+const playingOnTextPrefix = "Actuellement sur ";
+
 /**
  * Search first map in JSON with "currentlyPlaying : true" 
  * If no map return undefined
@@ -68,10 +70,16 @@ const changeMap = (objectJSON, next) => {
         
         objectJSON.hud_config.mapSeries.maps["map" + currentMap].currentlyPlaying = false;
         objectJSON.hud_config.mapSeries.maps["map" + futureMap].currentlyPlaying = true;
-        objectJSON.hud_config.playingOnText = "Actuellement sur " + objectJSON.hud_config.mapSeries.maps["map" + futureMap].mapLogo
+        objectJSON.hud_config.playingOnText = playingOnTextPrefix + objectJSON.hud_config.mapSeries.maps["map" + futureMap].mapLogo
     }
 }
 
+/**
+ * Main method for script execution, select what action while be executed
+ * according to command parameters.
+ * @param {*} str JSON File Path
+ * @param {*} options Arguments/Options
+ */
 const execute = (str, options) => {
     if(!str) {
         throw new Error("No JSON file specified")
@@ -109,4 +117,3 @@ program
   .action(execute)
 
 program.parse();
-
