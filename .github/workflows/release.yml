@@ -20,6 +20,11 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Archive Executable
+        uses: actions/upload-artifact@v3
+        with:
+          name: dokai-switch.exe
+          path: dist/dokai-switch.exe
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
