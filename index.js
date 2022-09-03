@@ -40,6 +40,38 @@ const getCurrentMapNumber = (objectJSON) => {
     return undefined;
 }
 
+/**
+ * Change map of the object according to "next" or "previous" option
+ * @param {*} objectJSON Object to change
+ * @param {boolean} next true if next map is asked false if previous
+ */
+const changeMap = (objectJSON, next) => {
+    const currentMap = getCurrentMapNumber(objectJSON);
+    const maxMap = getMaxMapNumber(objectJSON);
+    
+    // If no map the first is selected
+    if(!currentMap) {
+        objectJSON.hud_config.mapSeries.maps.map1.currentlyPlaying = true;
+    }
+
+    let futureMap = 0;
+    let check = false;
+    if (next) {
+        futureMap = (currentMap + 1);
+        check = currentMap >= 1 && currentMap < maxMap;
+    } else {
+        futureMap = (currentMap - 1);
+        check = currentMap > 1 && currentMap <= maxMap;
+    }
+
+    if (check) {
+        
+        objectJSON.hud_config.mapSeries.maps["map" + currentMap].currentlyPlaying = false;
+        objectJSON.hud_config.mapSeries.maps["map" + futureMap].currentlyPlaying = true;
+        objectJSON.hud_config.playingOnText = "Actuellement sur " + objectJSON.hud_config.mapSeries.maps["map" + futureMap].mapLogo
+    }
+}
+
 const execute = (str, options) => {
     if(!str) {
         throw new Error("No JSON file specified")
@@ -56,35 +88,9 @@ const execute = (str, options) => {
     } else if (options.toggleShowSeriesInfo) {
         objectJSON.hud_config.showSeriesInfo = !objectJSON.hud_config.showSeriesInfo
     } else if (options.previousMap) {
-        const currentMap = getCurrentMapNumber(objectJSON);
-        const maxMap = getMaxMapNumber(objectJSON);
-        // If no map the first is selected
-        if(!currentMap) {
-            objectJSON.hud_config.mapSeries.maps.map1.currentlyPlaying = true;
-        }
-
-        if (currentMap > 1 && currentMap <= maxMap) {
-            const futureMap = (currentMap - 1)
-            objectJSON.hud_config.mapSeries.maps["map" + currentMap].currentlyPlaying = false;
-            objectJSON.hud_config.mapSeries.maps["map" + futureMap].currentlyPlaying = true;
-            objectJSON.hud_config.playingOnText = "Actuellement sur " + objectJSON.hud_config.mapSeries.maps["map" + futureMap].mapLogo
-        }
-        //objectJSON.hud_config.playingOnText = `Actuellement sur ${options.map}`
+        changeMap(objectJSON, false);
     } else if (options.nextMap) {
-        const currentMap = getCurrentMapNumber(objectJSON);
-        const maxMap = getMaxMapNumber(objectJSON);
-        // If no map the first is selected
-        if(!currentMap) {
-            objectJSON.hud_config.mapSeries.maps.map1.currentlyPlaying = true;
-        }
-
-        if (currentMap >= 1 && currentMap < maxMap) {
-            const futureMap = (currentMap + 1)
-            objectJSON.hud_config.mapSeries.maps["map" + currentMap].currentlyPlaying = false;
-            objectJSON.hud_config.mapSeries.maps["map" + futureMap].currentlyPlaying = true;
-            objectJSON.hud_config.playingOnText = "Actuellement sur " + objectJSON.hud_config.mapSeries.maps["map" + futureMap].mapLogo
-        }
-        //objectJSON.hud_config.playingOnText = `Actuellement sur ${options.map}`
+        changeMap(objectJSON, true);
     } else {
         throw new Error("Unknown option");
     }
