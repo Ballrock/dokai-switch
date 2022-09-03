@@ -22,7 +22,7 @@ First you need to install **Advanced Laucher \[BarRaider\]** plugin in Stream De
 
 Once it's done you must create a new shortcut in your Stream Deck profile.
 
-![Advanced Launcher Plugin](https://github.com/Ballrock/dokai-switch/blob/main/docs/plugin.jpg?raw=true)
+![Advanced Launcher Plugin](https://github.com/Ballrock/dokai-switch/blob/main/docs/plugin.png?raw=true)
 
 - Choose your title
 - Now click on <kbd>Choose a file</kbd> and select the executable of this script.
@@ -31,4 +31,4 @@ Once it's done you must create a new shortcut in your Stream Deck profile.
 
 For exemple to go on next map for a JSON file named `myConfig.json` at the root of `C:` i will have something like this :
 
-![Example](https://github.com/Ballrock/dokai-switch/blob/main/docs/plugin.jpg?raw=true)
+![Example](https://github.com/Ballrock/dokai-switch/blob/main/docs/example.png?raw=true)
