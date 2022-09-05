@@ -99,6 +99,13 @@ const execute = (str, options) => {
         changeMap(objectJSON, false);
     } else if (options.nextMap) {
         changeMap(objectJSON, true);
+    } else if (options.reset) {
+        objectJSON.meta.team_ct.matches_won_this_series = 0;
+        objectJSON.meta.team_t.matches_won_this_series = 0;
+    } else if (options.addMapCT) {
+        objectJSON.meta.team_ct.matches_won_this_series++
+    } else if (options.addMapT) {
+        objectJSON.meta.team_t.matches_won_this_series++
     } else {
         throw new Error("Unknown option");
     }
@@ -110,10 +117,14 @@ const execute = (str, options) => {
 program
   .description('Dokai\'s Switch')
   .argument('<required>', 'JSON file to change')
-  .addOption(new Option('-p, --previousMap', 'Change current map to the previous').conflicts(['switchTeam', 'toggleShowSeriesInfo', 'nextMap']))
-  .addOption(new Option('-n, --nextMap', 'Change current map to the next').conflicts(['switchTeam', 'toggleShowSeriesInfo', "previousMap"]))
-  .addOption(new Option('-t, --switchTeam', 'Switch team side').conflicts(['previousMap', 'nextMap', 'toggleShowSeriesInfo']))
-  .addOption(new Option('-s, --toggleShowSeriesInfo', 'Toggle ShowSeriesInfo').conflicts(['switchTeam', 'previousMap', 'nextMap']))
+  .addOption(new Option('-r, --reset', 'Reset maps of both teams').conflicts(['switchTeam', 'toggleShowSeriesInfo', 'nextMap', "previousMap", "addScoreCT","addScoreT"]))
+  .addOption(new Option('--addMapCT', 'Add one map win to CT').conflicts(['switchTeam', 'toggleShowSeriesInfo', 'nextMap', "previousMap", "addScoreCT", "reset"]))
+  .addOption(new Option('--addMapT', 'Add one map win to T').conflicts(['switchTeam', 'toggleShowSeriesInfo', "previousMap",  'nextMap', "addScoreT", "reset"]))
+  .addOption(new Option('-s, --toggleShowSeriesInfo', 'Toggle ShowSeriesInfo').conflicts(['switchTeam', 'previousMap', 'nextMap', "addScoreCT", "addScoreT", "reset"]))
+  .addOption(new Option('-p, --previousMap', 'Change current map to the previous').conflicts(['switchTeam', 'toggleShowSeriesInfo', 'nextMap', "addScoreCT", "addScoreT", "reset"]))
+  .addOption(new Option('-n, --nextMap', 'Change current map to the next').conflicts(['switchTeam', 'toggleShowSeriesInfo', "previousMap", "addScoreCT", "addScoreT", "reset"]))
+  .addOption(new Option('-t, --switchTeam', 'Switch team side').conflicts(['previousMap', 'nextMap', 'toggleShowSeriesInfo', "addScoreCT", "addScoreT", "reset"]))
+  .addOption(new Option('-s, --toggleShowSeriesInfo', 'Toggle ShowSeriesInfo').conflicts(['switchTeam', 'previousMap', 'nextMap', "addScoreCT", "addScoreT", "reset"]))
   .action(execute)
 
 program.parse();

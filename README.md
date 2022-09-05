@@ -9,6 +9,10 @@ Arguments:
   required                    JSON file to change
 
 Options:
+  -r, --reset                 Reset maps of both teams
+  --addMapCT                  Add one map win to CT
+  --addMapT                   Add one map win to T
+  -s, --toggleShowSeriesInfo  Toggle ShowSeriesInfo
   -p, --previousMap           Change current map to the previous
   -n, --nextMap               Change current map to the next
   -t, --switchTeam            Switch team side
