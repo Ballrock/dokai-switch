@@ -36,3 +36,6 @@ Once it's done you must create a new shortcut in your Stream Deck profile.
 For exemple to go on next map for a JSON file named `myConfig.json` at the root of `C:` i will have something like this :
 
 ![Example](https://github.com/Ballrock/dokai-switch/blob/main/docs/example.png?raw=true)
+
+Warning ⚠️ : Advanced Laucher can be temperamental sometimes when change are made on executable file (when you update it in a new version for example). So, carefully check if you're shortcuts still ok when you tap on it and don't have any Warning sign (⚠️).  
+If that is the case please select again the executable on `Application` with <kbd>Choose a file</kbd>.
